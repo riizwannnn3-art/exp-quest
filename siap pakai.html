@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quest XP - Jalur Ilmuwan</title>
+<link rel="stylesheet" href="siap pakai.css">
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="app">
+  <header class="header">
+    <div>
+      <h1>🎯 Quest XP</h1>
+      <p class="tagline">Jalur menuju <strong>Ilmuwan Hebat</strong></p>
+    </div>
+    <span class="date-badge" id="dateBadge">--</span>
+  </header>
+
+  <section class="stats">
+    <div class="stat-box"><div class="stat-label">Total XP</div><div class="stat-value" id="totalXp">0</div></div>
+    <div class="stat-box"><div class="stat-label">Hari Ini</div><div class="stat-value" id="todayXp">0</div></div>
+    <div class="stat-box"><div class="stat-label">Aktivitas</div><div class="stat-value" id="totalLogs">0</div></div>
+    <div class="stat-box"><div class="stat-label">Hadiah</div><div class="stat-value" id="totalRewards">0</div></div>
+  </section>
+
+  <section class="level-card">
+    <div class="level-head">
+      <span class="level-name" id="levelName">🌱 Pemula Lv1</span>
+      <span class="level-xp" id="levelXpText">0 / 100 XP</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </section>
+
+  <section class="journey">
+    <div class="journey-head">
+      <span class="journey-title">🗺️ Jalur Ilmuwan</span>
+      <span class="journey-pct" id="journeyProgress">0%</span>
+    </div>
+    <div class="journey-status">
+      <span class="journey-current" id="journeyCurrent">🌱 Pemula Lv1</span>
+      <span class="journey-next" id="journeyNext">→ Lv2</span>
+    </div>
+    <div class="journey-nodes" id="journeyMap"></div>
+    <div class="journey-goal">
+      🎓 <strong>Tujuan:</strong> Ilmuwan Hebat di <strong>Lv100</strong> • Max <strong>Lv200</strong>
+    </div>
+  </section>
+
+  <button class="btn-redeem" id="redeemBtn" disabled>🎁 Tukar XP jadi Hadiah</button>
+
+  <section class="section">
+    <div class="section-head">
+      <span>⚡ Kategori Belajar</span>
+      <span class="chip" id="todayCounter">Hari ini: 0 XP</span>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <button type="button" class="cat cat-inggris" data-cat="inggris">
+        <span class="cat-badge">+25 XP/unit</span>
+        <span class="cat-emoji">🇬🇧</span>
+        <span class="cat-name">Bahasa Inggris</span>
+        <span class="cat-hint">Tulis: 20 kosakata = 500 XP</span>
+      </button>
+
+      <button type="button" class="cat cat-jepang" data-cat="jepang">
+        <span class="cat-badge">+25 XP/unit</span>
+        <span class="cat-emoji">🇯🇵</span>
+        <span class="cat-name">Bahasa Jepang</span>
+        <span class="cat-hint">Tulis: 10 kanji = 250 XP</span>
+      </button>
+
+      <div class="cat cat-ipa cat-timer" data-cat="ipa">
+        <span class="cat-badge">+35 XP/menit</span>
+        <span class="cat-emoji">🔬</span>
+        <span class="cat-name">IPA / Sains</span>
+        <span class="cat-hint">Timer per menit</span>
+        <div class="timer-display" data-timer="ipa">00:00</div>
+        <div class="timer-btns">
+          <button type="button" class="tbtn start" data-action="start" data-cat="ipa">▶</button>
+          <button type="button" class="tbtn pause" data-action="pause" data-cat="ipa" style="display:none">⏸</button>
+          <button type="button" class="tbtn stop"  data-action="stop"  data-cat="ipa" style="display:none">⏹</button>
+        </div>
+      </div>
+
+      <div class="cat cat-coding cat-timer" data-cat="coding">
+        <span class="cat-badge">+35 XP/menit</span>
+        <span class="cat-emoji">💻</span>
+        <span class="cat-name">Programming</span>
+        <span class="cat-hint">Timer per menit</span>
+        <div class="timer-display" data-timer="coding">00:00</div>
+        <div class="timer-btns">
+          <button type="button" class="tbtn start" data-action="start" data-cat="coding">▶</button>
+          <button type="button" class="tbtn pause" data-action="pause" data-cat="coding" style="display:none">⏸</button>
+          <button type="button" class="tbtn stop"  data-action="stop"  data-cat="coding" style="display:none">⏹</button>
+        </div>
+      </div>
+
+      <div class="cat cat-berkebun cat-timer" data-cat="berkebun">
+        <span class="cat-badge">+17 XP/menit</span>
+        <span class="cat-emoji">🌱</span>
+        <span class="cat-name">Berkebun</span>
+        <span class="cat-hint">Timer per menit</span>
+        <div class="timer-display" data-timer="berkebun">00:00</div>
+        <div class="timer-btns">
+          <button type="button" class="tbtn start" data-action="start" data-cat="berkebun">▶</button>
+          <button type="button" class="tbtn pause" data-action="pause" data-cat="berkebun" style="display:none">⏸</button>
+          <button type="button" class="tbtn stop"  data-action="stop"  data-cat="berkebun" style="display:none">⏹</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span>✏️ Tambah Quest Sendiri</span></div>
+    <div class="add-row">
+      <input type="text" id="customInput" placeholder="Contoh: 20 kanji / 30 menit coding / kosong = 300 XP" maxlength="120">
+      <select id="customCat">
+        <option value="inggris">🇬🇧 Inggris</option>
+        <option value="jepang">🇯🇵 Jepang</option>
+        <option value="ipa">🔬 IPA</option>
+        <option value="coding">💻 Coding</option>
+        <option value="berkebun">🌱 Berkebun</option>
+      </select>
+      <button type="button" class="btn-add" id="addBtn">+ Tambah</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span>📜 Riwayat Aktivitas</span>
+      <span class="chip" id="logCounter">0</span>
+    </div>
+    <div class="log-list" id="logList"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span>💾 Cadangan Data</span></div>
+    <div class="backup-row">
+      <button type="button" class="btn-backup" id="exportBtn">⬇️ Ekspor</button>
+      <button type="button" class="btn-backup" id="importBtn">⬆️ Impor</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json" style="display:none">
+    <button type="button" class="btn-reset" id="resetBtn">🗑️ Reset Semua Data</button>
+  </section>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <span class="modal-emoji" id="rewardEmoji">🎁</span>
+    <h2>Selamat!</h2>
+    <p id="rewardText">Kamu mendapat hadiah!</p>
+    <button type="button" class="modal-btn" id="closeModal">Ambil 🎉</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="goalOverlay">
+  <div class="modal modal-goal">
+    <span class="modal-emoji">🏆</span>
+    <h2>Ilmuwan Hebat!</h2>
+    <p>Kamu mencapai <strong>Level 100</strong> dan resmi bergelar<br><strong>🔬 ILMUWAN HEBAT</strong>!</p>
+    <p class="quote">"Ilmu adalah cahaya yang tidak pernah padam."</p>
+    <p class="sub">Masih ada <strong>100 level</strong> lagi menuju 👑 Legendaris</p>
+    <button type="button" class="modal-btn" id="closeGoal">Lanjut Belajar 🌟</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="siap pakai.js"></script>
+</body>
+</html>
